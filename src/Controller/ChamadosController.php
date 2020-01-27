@@ -55,6 +55,8 @@ class ChamadosController extends AppController
             $chamado = $this->Chamados->patchEntity($chamado, $this->request->getData());
             //ALTERANDO O VALOR DO STATUS PARA TORNAR UM PADRÃO SEMPRE ATIVO NA HORA DE ADICIONAR
             $chamado->status = true;
+            //ALTERANDO O VALOR DO FEITO PARA TORNAR UM PADRÃO SEMPRE INATIVO NA HORA DE ADICIONAR
+            $chamado->feito = false;
             if ($this->Chamados->save($chamado)) {
                 $this->Flash->success(__('O chamado foi adicionado'));
 
@@ -101,9 +103,9 @@ class ChamadosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $chamado = $this->Chamados->get($id);
         if ($this->Chamados->delete($chamado)) {
-            $this->Flash->success(__('The chamado has been deleted.'));
+            $this->Flash->success(__('Chamado deletado com sucesso.'));
         } else {
-            $this->Flash->error(__('The chamado could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Erro ao deletar chamado.'));
         }
 
         return $this->redirect(['action' => 'index']);
@@ -122,6 +124,8 @@ class ChamadosController extends AppController
             $this->Flash->success(__('O chamadO foi excluído com sucesso!'));
 
             return $this->redirect(['action' => 'index']);
+        } else {
+            $this->Flash->error(__('Erro ao excluir chamado.'));
         }
        
     }

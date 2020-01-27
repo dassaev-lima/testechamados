@@ -17,7 +17,7 @@
         <?php
             echo $this->Form->control('titulo');
             echo $this->Form->control('descricao');
-            echo $this->Form->control('feito');
+            //echo $this->Form->control('feito');
             //IMPEDIR QUE O USUÁRIO POSSA CADASTRAR VALOR NO CAMPO DE STATUS - JÁ QUE A FUNÇÃO DE ADICIONAR JÁ
             //POSSUI POR PADRÃO TORNAR O REGISTRO VISÍVEL
             //echo $this->Form->control('status');
